@@ -50,6 +50,7 @@ import { resolveImageSanitizationLimits } from "../../image-sanitization.js";
 import { resolveModelAuthMode } from "../../model-auth.js";
 import { normalizeProviderId, resolveDefaultModelForAgent } from "../../model-selection.js";
 import { createOllamaStreamFn, OLLAMA_NATIVE_BASE_URL } from "../../ollama-stream.js";
+import { createRovoDevStreamFn, ROVO_DEV_CLI_API } from "../../rovo-dev-stream.js";
 import { createOpenAIWebSocketStreamFn, releaseWsSession } from "../../openai-ws-stream.js";
 import { resolveOwnerDisplaySetting } from "../../owner-display.js";
 import {
@@ -1156,6 +1157,9 @@ export async function runEmbeddedAttempt(
           providerBaseUrl,
         });
         activeSession.agent.streamFn = createOllamaStreamFn(ollamaBaseUrl, params.model.headers);
+      } else if (params.model.api === ROVO_DEV_CLI_API) {
+        // Rovo Dev CLI: bypass HTTP and spawn `acli rovodev run` locally.
+        activeSession.agent.streamFn = createRovoDevStreamFn();
       } else if (params.model.api === "openai-responses" && params.provider === "openai") {
         const wsApiKey = await params.authStorage.getApiKey(params.provider);
         if (wsApiKey) {

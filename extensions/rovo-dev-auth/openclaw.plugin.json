@@ -1,0 +1,7 @@
+{
+  "id": "rovo-dev-auth",
+  "name": "Rovo Dev Auth",
+  "description": "Atlassian Rovo Dev provider via local CLI or API key",
+  "main": "index.ts",
+  "version": "0.0.0"
+}

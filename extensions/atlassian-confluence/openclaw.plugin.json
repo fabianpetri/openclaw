@@ -1,0 +1,7 @@
+{
+  "id": "atlassian-confluence",
+  "name": "Atlassian Confluence",
+  "description": "Confluence Search API tool for retrieval-augmented chat",
+  "main": "index.ts",
+  "version": "0.0.0"
+}

@@ -1115,6 +1115,7 @@
                   "providers/openrouter",
                   "providers/qianfan",
                   "providers/qwen",
+                  "providers/rovo-dev",
                   "providers/synthetic",
                   "providers/together",
                   "providers/vercel-ai-gateway",
